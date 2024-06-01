@@ -99,9 +99,105 @@
     });
 
     let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
+    console.log(errorBtns);
+
+    function do_try(){
+      let elem = document.getElementById("not_an_id");
+      try {
+        if(elem == null){
+          throw new Error('invalid id');
+        }
+        console.log('found it');
+      } catch (error){
+        console.error('Error:', error.message);
+      } finally {
+        console.log('done with function');
+      }
+    }
+    do_try();
+
+    function do1() {
+      console.log('1');
+      do2();
+    };
+    function do2() {
+      console.log('2');
+      do3();
+    };
+    function do3() {
+      console.log('3');
+      console.trace("Functions called until now:")
+    };
 
     // Start your code here
     // You may move this JS to another file if you wish
+    errorBtns[0].addEventListener('click', function() {
+      console.log("i console logged something");
+    });
+    errorBtns[1].addEventListener('click', function() {
+      console.error('I created an error !!!!');
+    });
+    errorBtns[2].addEventListener('click', function() {
+      console.count('Button Click Count');
+    });
+    errorBtns[3].addEventListener('click', function() {
+      console.warn('This is a Warning !!!!!!');
+    });
+    errorBtns[4].addEventListener('click', function() {
+      const thing = false;
+      console.assert(thing, 'The ASSERTION IS INCORRECT !!!!!!!!!!!');
+    });
+    errorBtns[5].addEventListener('click', function() {
+      console.clear();
+    });
+    errorBtns[6].addEventListener('click', function() {
+      const obj = {
+        name: "Lebron James",
+        height: 6.9,
+        weight: 250,
+        is_amazing: true,
+        the_greatest: true
+      };
+      console.dir(obj);
+
+    });
+    errorBtns[7].addEventListener('click', function() {
+      const op = document.getElementById('operator');
+      console.dirxml(op);
+    });
+    errorBtns[8].addEventListener('click', function() {
+      console.group('Button Click Group');
+      console.log('Log');
+      console.warn('Warning');
+      console.error('Error');
+    });
+    errorBtns[9].addEventListener('click', function() {
+      console.groupEnd();
+    });
+    errorBtns[10].addEventListener('click', function() {
+      const data = [
+        { id: 1, name: 'Lebron', age: 39 },
+        { id: 2, name: 'Draymond', age: 33 },
+        { id: 3, name: 'Steph', age: 36 }
+      ];
+      console.table(data);
+    });
+    errorBtns[11].addEventListener('click', function() {
+      console.time('Timer');
+      console.log("Started the timer.")
+    });
+    errorBtns[12].addEventListener('click', function() {
+      console.log("Ended the timer.")
+      console.timeEnd('Timer');
+    });
+    errorBtns[13].addEventListener('click', function() {
+      do1();
+    });
+
+    
+    
+
+    
   </script>
 </body>
 
